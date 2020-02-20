@@ -31,4 +31,36 @@ class UI {
     <div id="repos"></div>
     `;
   }
+  //Show Alert
+  showAlert(message, className) {
+    // Clear remaining alert
+    this.clearAlert();
+    // Create div
+    const div = document.createElement('div');
+    // Add class
+    div.className = className;
+    // Add text
+    div.appendChild(document.createTextNode(message));
+    // Get parent
+    const container = document.querySelector('.searchContainer');
+    // Get search box
+    const search = document.querySelector('.search');
+    //Insert Alert
+    container.insertBefore(div, search);
+    // Set timeout after 3 second
+    setTimeout(() => {
+      this.clearAlert();
+    }, 3000);
+  }
+  // Clear Alert
+  clearAlert() {
+    const currentAlert = document.querySelector('.alert');
+    if (currentAlert) {
+      currentAlert.remove();
+    }
+  }
+  //Clear profile
+  clearProfile() {
+    this.profile.innerHTML = '';
+  }
 }
